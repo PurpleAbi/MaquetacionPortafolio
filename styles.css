@@ -320,6 +320,76 @@ input:focus {
     content: '\22C0';
 }
 
+/* Thumbnail — add this class to any <img> you want clickable */
+.img-modal-trigger {
+  cursor: pointer;
+}
+
+/* Modal overlay */
+.img-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-modal.is-active {
+  display: flex;
+}
+
+.img-modal-background {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.86);
+}
+
+.img-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 1;
+}
+
+.img-modal-content img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+
+.img-modal-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(10, 10, 10, 0.7);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.img-modal-close::before,
+.img-modal-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.img-modal-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
 
 @media screen and (max-width:1200px) {
     .container {

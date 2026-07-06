@@ -39,3 +39,35 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('imgModal');
+  const modalImg = document.getElementById('imgModalImg');
+
+  function openModal(src, alt) {
+    modalImg.src = src;
+    modalImg.alt = alt || '';
+    modal.classList.add('is-active');
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-active');
+    modalImg.src = ''; // stop loading/free memory
+  }
+
+  document.querySelectorAll('.img-modal-trigger').forEach(img => {
+    img.addEventListener('click', () => {
+      const fullSrc = img.dataset.full || img.src;
+      openModal(fullSrc, img.alt);
+    });
+  });
+
+  modal.querySelector('.img-modal-background').addEventListener('click', closeModal);
+  modal.querySelector('.img-modal-close').addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+      closeModal();
+    }
+  });
+});
